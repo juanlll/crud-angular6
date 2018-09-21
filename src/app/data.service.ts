@@ -30,4 +30,12 @@ export class DataService {
      return this.http.delete('/api/record/'+id);
    }
 
+   putRecord(record,id){
+     return this.http.put('/api/record/'+id,{
+         temp:record.temp,
+         humidity:record.humidity,
+         co2:record.co2
+     });
+   }
+
 }

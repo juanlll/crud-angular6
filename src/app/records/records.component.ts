@@ -14,6 +14,9 @@ record = {
 	humidity:null,
 	co2:null
 };
+
+show_btn = false;
+
    constructor(private dataService: DataService) {
   	
 
@@ -23,6 +26,12 @@ record = {
   	this.getRecords();
   }
 
+
+  clearRecord(){
+     this.record.co2 = null;
+    this.record.humidity = null;
+    this.record.temp = null; 
+  }
 
   getRecords(){
   	this.dataService.getRecords().subscribe(data=>{
@@ -53,11 +62,10 @@ record = {
       this.getRecords();
           }
     );
-
-    this.record.co2 = null;
-    this.record.humidity = null;
-    this.record.temp = null; 
+this.clearRecord();
+   
   }
+
 
 
   deleteRecord(id,x){
@@ -69,4 +77,27 @@ record = {
       this.getRecords();
     });
   }
+
+  putRecord(id){
+    this.dataService.putRecord(this.record,id).subscribe(d=>{
+      console.log("modificado!");
+      this.getRecords();
+    },e=>{
+      console.log(e);
+      this.errors = e.error;
+      this.getRecords();
+    });
+    this.closeRecord();
+  }
+
+  showRecord(record){
+    this.record = record;
+    this.show_btn = true;
+  }
+
+  closeRecord(){
+    this.show_btn = false;
+    this.clearRecord();
+  }
+
 }
