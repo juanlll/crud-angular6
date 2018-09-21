@@ -1,0 +1,61 @@
+<div class="row">
+	
+
+	 <ul id="lista" class="collection">
+        <li class="collection-item">
+        	<div class="row white">
+        		<div class="col l4 m6 s12">
+	<label>Temperatura</label>
+	<input type="text" id="temp" name="temp" [(ngModel)]="record.temp">	
+	</div>
+	<div class="col l4 m6 s12">
+	<label>Humedad</label>
+	<input type="text" id="humidity" name="humidity" [(ngModel)]="record.humidity">	
+	</div>
+	<div class="col l4 m6 s12">
+	<label>Co2</label>
+	<input type="text" id="co2" name="co2" [(ngModel)]="record.co2">		
+	</div>
+
+	<div class="col m12 s12 l12 center">
+		<button class="btn orange" (click)="postRecord(record)">Guardar Registro</button>
+	</div>
+        	</div>
+
+        </li>
+         <li class="collection-item" >
+
+		    <ul class="collection">
+		 <li *ngIf="errors.temp" class="collection-item" >
+		 	<label style="color: red; font-weight: bold;">{{errors.temp}}</label>
+		 </li>
+
+		 <li *ngIf="errors.humidity" class="collection-item" >
+		 	<label style="color: red; font-weight: bold;">{{errors.humidity}}</label>
+		 </li>
+
+		 <li *ngIf="errors.co2" class="collection-item" >
+		 	<label style="color: red; font-weight: bold;">{{errors.co2}}</label>
+		 </li>
+		    </ul> 
+        </li>
+        <li class="collection-item" >
+		    <ul id="lista-records" class="collection">
+		       <li class="collection-item" *ngFor="let record of records; let i = index">
+		       	<span class="badge red white-text" style="cursor: pointer;"
+		       	(click)="deleteRecord(record.id,i)">eliminar</span>
+			       Temperatura: {{record.temp}}°<br>
+			       Humedad: % {{record.humidity}}<br>
+			       Co2: ppm {{record.co2}}<br>
+
+		        </li>
+		    </ul> 
+        </li>
+       
+      </ul>
+            
+
+
+	
+
+</div>
