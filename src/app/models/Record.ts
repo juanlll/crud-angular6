@@ -1,8 +1,8 @@
 export interface Record{
 	"id":number;
-	"temp":number;
 	"humidity":number;
+	"temp":number;
 	"co2":number;
-	"created_at":string;
-	"updated_at":string;
+	// "created_at":Date;
+	// "updated_at":Date;
 }

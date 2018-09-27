@@ -19,7 +19,7 @@ export class DataService {
    }
 
    postRecord(record){
-   		return this.http.post<Record[]>('/api/rec',{
+   		return this.http.post('/api/rec',{
    			temp:record.temp,
    			humidity:record.humidity,
    			co2:record.co2

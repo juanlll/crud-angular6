@@ -1,0 +1,16 @@
+
+<table>
+	<tr>
+		<th>temperatura</th>
+		<th>humedad</th>
+		<th>co2</th>
+	</tr>
+	<tr *ngFor="let record of records; let i = index">
+		<td>{{record.temp}}</td>
+	<td>{{record.humidity}}</td>
+	<td>{{record.co2}}</td>
+	<td><button (click)="show_record(record,i)">editar</button></td>
+	<td><button (click)="delete_record(record.id,i)">eliminar</button></td>
+	</tr>
+	
+</table>
